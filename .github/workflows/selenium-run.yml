@@ -1,0 +1,23 @@
+name: Run Selenium Script
+
+on:
+  schedule:
+    - cron: '30 9 * * *'   # 3 PM IST
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Run Selenium Test
+        run: mvn test
