@@ -1,0 +1,12 @@
+<suite name="DemoBlaze Automation Suite" parallel="tests" thread-count="2">
+
+   <test name="E2E Tests">
+       <classes>
+           <class name="tests.EndToEndTest"/>
+       </classes>
+       <listeners>
+    <listener class-name="utils.TestListener"/>
+</listeners>
+   </test>
+
+</suite>
