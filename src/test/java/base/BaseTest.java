@@ -28,7 +28,15 @@ public class BaseTest {
 	       prefs.put("profile.password_manager_enabled", false);
 	       prefs.put("profile.password_manager_leak_detection", false);
 	       options.setExperimentalOption("prefs", prefs);
-	       driver = new ChromeDriver(options);
+	     
+	    // New code for GitHub Actions
+	       ChromeOptions options1 = new ChromeOptions();
+	       options1.addArguments("--headless=new"); // Run without a window
+	       options1.addArguments("--no-sandbox"); // Required for Linux
+	       options1.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems
+	       options1.addArguments("--window-size=1920,1080"); // Set a virtual screen size
+
+	       driver = new ChromeDriver(options1);
 	       driver.manage().window().maximize();
 	       driver.get(prop.getProperty("url"));
 	       wait = new WebDriverWait(driver, Duration.ofSeconds(10));
